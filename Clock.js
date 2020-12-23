@@ -1,6 +1,6 @@
 let DigitClock = function(){
     this.minutes= "01";
-    this.secondes = "01";
+    this.secondes = "22";
 }
 
 DigitClock.prototype.initDiv = function (){
@@ -40,7 +40,7 @@ DigitClock.prototype.changeDigitFront = function (){
             this.secondes = 59;
         }
     }
-    console.log(parseInt(this.secondes))
+  
     if(parseInt(this.secondes) === 0 && parseInt(this.minutes) === 0){
         let digit = document.getElementsByClassName("digit");
         for(let i of digit){

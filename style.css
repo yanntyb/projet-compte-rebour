@@ -34,3 +34,27 @@
     width: 500px;
     text-align: right;
 }
+
+.button {
+    border: 1px solid whitesmoke;
+    background-color: black;
+    color: darkgoldenrod;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 100%;
+    }
+    79%{
+        opacity: 100%;
+    }
+    80%{
+        opacity: 0%;
+    }
+    90%{
+        opacity: 0%;
+    }
+    91%{
+        opacity: 100%;
+    }
+}

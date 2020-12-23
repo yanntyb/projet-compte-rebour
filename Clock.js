@@ -1,6 +1,6 @@
 let DigitClock = function(interval){
     this.minutes= "00";
-    this.secondes = "10";
+    this.secondes = "05";
     this.interval = interval
     this.run = false;
 }
@@ -31,9 +31,17 @@ DigitClock.prototype.changeDigitFront = function (){
     this.checkNull()
   
     if(parseInt(this.secondes) === 0 && parseInt(this.minutes) === 0){
-        let digit = document.getElementsByClassName("digit");
+        let digit = document.getElementsByClassName("front");
         for(let i of digit){
             i.style.animationName = "flash";
+            i.style.animationDuration = "0.5s";
+            i.style.animationIterationCount = "infinite"
+        }
+    }
+    else{
+        let digit = document.getElementsByClassName("digit");
+        for(let i of digit){
+            i.style.animationName = "none";
         }
     }
 }
@@ -42,6 +50,9 @@ DigitClock.prototype.checkNull = function (){
     if(parseInt(this.secondes) > 0){
         if(this.run){
             this.secondes -= 1;
+        }
+        if(this.secondes === 60){
+            this.secondes = 0;
         }
         if(parseInt(this.secondes) < 10){
             this.secondes  = "0" + this.secondes;
@@ -78,37 +89,26 @@ DigitClock.prototype.changeDigitFrontTimeOut = function (){
 DigitClock.prototype.chooseTime = function(){
     let _this = this;
     this.lauch = document.createElement("div");
+    this.lauch.className = "button";
     this.lauch.innerHTML = "START";
-    this.lauch.style.position = "absolute";
-    this.lauch.style.alignSelf = "flex-start";
-    this.lauch.style.left = "20px";
-    this.lauch.style.top = "20px"
-
+    this.lauch.style.cssText = "position: absolute; aligne-self: flex-start; left: 15px; top: 20px;";
     this.lauch.addEventListener("click",function(){
         _this.run = true;
     })
 
     this.addHours = document.createElement("div");
+    this.addHours.className = "button";
     this.addHours.innerHTML = "ADD MINUTES";
-    this.addHours.style.position = "absolute";
-    this.addHours.style.alignSelf = "flex-start";
-    this.addHours.style.left = "20px";
-    this.addHours.style.top = "40px"
-
-
+    this.addHours.style.cssText = "position: absolute; aligne-self: flex-start; left: 15px; top: 40px;";
     this.addHours.addEventListener("click",function (){
         _this.minutes ++;
         _this.checkNull();
     })
 
     this.removeHours = document.createElement("div");
+    this.removeHours.className = "button";
     this.removeHours.innerHTML = "REMOVE MINUTES";
-    this.removeHours.style.position = "absolute";
-    this.removeHours.style.alignSelf = "flex-start";
-    this.removeHours.style.left = "20px";
-    this.removeHours.style.top = "60px"
-
-
+    this.removeHours.style.cssText = "position: absolute; aligne-self: flex-start; left: 15px; top: 60px;";
     this.removeHours.addEventListener("click",function (){
         if(_this.minutes > 0){
             _this.minutes --;
@@ -118,26 +118,18 @@ DigitClock.prototype.chooseTime = function(){
     })
 
     this.addMinutes = document.createElement("div");
+    this.addMinutes.className = "button";
     this.addMinutes.innerHTML = "ADD SECONDE";
-    this.addMinutes.style.position = "absolute";
-    this.addMinutes.style.alignSelf = "flex-start";
-    this.addMinutes.style.left = "20px";
-    this.addMinutes.style.top = "80px"
-
-
+    this.addMinutes.style.cssText = "position: absolute; aligne-self: flex-start; left: 15px; top: 80px;";
     this.addMinutes.addEventListener("click",function (){
         _this.secondes ++;
         _this.checkNull();
     })
 
     this.removeMinutes = document.createElement("div");
+    this.removeMinutes.className = "button";
     this.removeMinutes.innerHTML = "REMOVE SECONDE";
-    this.removeMinutes.style.position = "absolute";
-    this.removeMinutes.style.alignSelf = "flex-start";
-    this.removeMinutes.style.left = "20px";
-    this.removeMinutes.style.top = "100px"
-
-
+    this.removeMinutes.style.cssText = "position: absolute; aligne-self: flex-start; left: 15px; top: 100px;";
     this.removeMinutes.addEventListener("click",function (){
         if(_this.secondes > 1){
             _this.secondes --;
@@ -148,11 +140,21 @@ DigitClock.prototype.chooseTime = function(){
 
         _this.checkNull();
     })
+
+    this.stop = document.createElement("div");
+    this.stop.className = "button";
+    this.stop.innerHTML = "STOP";
+    this.stop.style.cssText = "position: absolute; aligne-self: flex-start; left: 15px; top: 120px;";
+    this.stop.addEventListener("click",function(){
+        _this.run = false;
+    })
+
     this.div.append(this.lauch);
     this.div.append(this.addHours);
     this.div.append(this.removeHours);
     this.div.append(this.addMinutes);
     this.div.append(this.removeMinutes);
+    this.div.append(this.stop);
 }
 
 

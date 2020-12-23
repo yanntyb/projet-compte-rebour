@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'digit';
+    src: url('digital-7.ttf');
+}
+
+.clock{
+    width: 800px;
+    height: 300px;
+    background-color: darkgrey;
+    border: 5px solid darkslateblue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.digit{
+    font-family: digit, sans-serif;
+    font-size: 15rem;
+}
+
+.back {
+    opacity: 50%;
+    position: absolute;
+    width: 500px;
+    text-align: right;
+}
+.front {
+    color: darkgoldenrod;
+    position: absolute;
+    width: 500px;
+    text-align: right;
+}

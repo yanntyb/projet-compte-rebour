@@ -39,6 +39,7 @@
     border: 1px solid whitesmoke;
     background-color: black;
     color: darkgoldenrod;
+    font-size: 0.7rem;
 }
 
 @keyframes flash {

@@ -31,7 +31,7 @@ DigitClock.prototype.changeDigitFront = function (){
     this.checkNull()
   
     if(parseInt(this.secondes) === 0 && parseInt(this.minutes) === 0){
-        let digit = document.getElementsByClassName("front");
+        let digit = this.div.getElementsByClassName("front")
         for(let i of digit){
             i.style.animationName = "flash";
             i.style.animationDuration = "0.5s";
@@ -39,7 +39,7 @@ DigitClock.prototype.changeDigitFront = function (){
         }
     }
     else{
-        let digit = document.getElementsByClassName("digit");
+        let digit = this.div.getElementsByClassName("front");
         for(let i of digit){
             i.style.animationName = "none";
         }
@@ -61,13 +61,13 @@ DigitClock.prototype.checkNull = function (){
     else if(parseInt(this.minutes) > 0){
         this.minutes -=1;
         if(parseInt(this.minutes) < 10){
-            this.minutes  = "0" + this.minutes;
+            this.minutes  = "0" + parseInt(this.minutes);
         }
         this.secondes = 59;
     }
     if(this.minutes < 10){
         if(this.minutes.toString().length < 2){
-            this.minutes = "0" + this.minutes
+            this.minutes = "0" + parseInt(this.minutes);
         }
 
     }

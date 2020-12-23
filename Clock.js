@@ -157,7 +157,6 @@ DigitClock.prototype.chooseTime = function(){
     this.div.append(this.stop);
 }
 
-
 DigitClock.prototype.printAll= function (){
     this.initDiv();
     this.initDigit();
@@ -165,6 +164,5 @@ DigitClock.prototype.printAll= function (){
     this.changeDigitFrontTimeOut();
     document.body.appendChild(this.div);
 }
-
 
 export {DigitClock};
